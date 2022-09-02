@@ -1,0 +1,412 @@
+:root{
+  --bgc:#dde2ee;
+  --main-bgc:rgba(255,255,255);
+  --font-color:#000;
+}
+/* 把我们所有标签的内外边距清零 */
+* {
+  color:var(--font-color);
+  margin: 0;
+  padding: 0;
+  /* css3盒子模型 */
+  box-sizing: border-box;
+  /* 盒子的宽高要加上边框和内边距 */
+}
+/* em 和 i 斜体的文字不倾斜 */
+em,
+i {
+  font-style: normal;
+}
+/* 去掉li 的小圆点 */
+li {
+  list-style: none;
+}
+
+img {
+  /* border 0 照顾低版本浏览器 如果 图片外面包含了链接会有边框的问题 */
+  border: 0;
+  /* 取消图片底侧有空白缝隙的问题 */
+  vertical-align: middle;
+}
+
+button {
+  /* 当我们鼠标经过button 按钮的时候，鼠标变成小手 */
+  cursor: pointer;
+}
+
+a {
+  color: #666;
+  text-decoration: none;
+}
+button,
+input {
+  /* "\5B8B\4F53" 就是宋体的意思 这样浏览器兼容性比较好 */
+  font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB,
+    '\5B8B\4F53', sans-serif;
+  /* 默认有灰色边框我们需要手动去掉 */
+  border: 0;
+  outline: none;
+}
+
+body {
+  /* CSS3 抗锯齿形 让文字显示的更加清晰 */
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--bgc);
+  font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB,
+    '\5B8B\4F53', sans-serif;
+  color: #666;
+}
+
+.hide,
+.none {
+  display: none;
+}
+/* 清除浮动 */
+.clearfix:after {
+  visibility: hidden;
+  clear: both;
+  display: block;
+  content: '.';
+  height: 0;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+.title {
+  width: 1100px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  h3 {
+    font-size: 20px;
+    font-weight: normal;
+  }
+  span {
+    height: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+    font-size: 12px;
+    opacity: 0.5;
+    cursor: pointer;
+    img {
+      width: 10px;
+      height: 10px;
+    }
+  }
+}
+.lcontent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  li {
+    position: relative;
+    width: 190px;
+    margin-top: 20px;
+    margin-right: 37.5px;
+    &:nth-child(5n) {
+      margin-right: 0;
+    }
+    &>img {
+      width: 190px;
+      height: 190px;
+      border-radius: 10px;
+    }
+    p {
+      margin-top: 7px;
+      font-size: 15px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      cursor: pointer;
+      &:hover {
+        color: rgb(53, 193, 255);
+      }
+    }
+
+    .shade {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 190px;
+      height: 190px;
+      cursor: pointer;
+      border-radius: 10px;
+      opacity: 0;
+      &:hover {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+      span {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background: #fff url('./play.svg') no-repeat center/25px;
+        &:hover {
+          background-color: rgb(53, 193, 255);
+        }
+      }
+    }
+  }
+}
+.pc{
+  height: 30px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top:  160px;
+  left: 2px;
+  line-height: 30px;
+  font-size: 15px;
+  color:white;
+  z-index: 99;
+  img{
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+  }
+}
+.scontent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  li {
+    width: 340px;
+    height: 100px;
+    margin-top: 20px;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    border-radius: 10px;
+    overflow: hidden;
+    &:hover {
+      background-color: rgb(243, 243, 243);
+    }
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+    }
+    .shade {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      opacity: 0;
+      &:hover {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+      span {
+        width: 45px;
+        height: 45px;
+        cursor: pointer;
+        border-radius: 25px;
+        background: #fff url('./play.svg') no-repeat center/23px;
+        &:hover {
+          background-color: rgb(53, 193, 255);
+        }
+      }
+    }
+    .text {
+      width: 220px;
+      height: 120px;
+      padding: 10px;
+      display: flex;
+      flex-flow: column;
+      p {
+        max-width: 200px;
+        width: fit-content;
+        height: 24px;
+        cursor:pointer;
+        line-height: 24px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        &:hover {
+          color: rgb(53, 193, 255);
+        }
+      }
+      .name {
+        font-size: 16px;
+      }
+      .artists {
+        color: rgb(128, 128, 128);
+        font-size: 10px;
+      }
+    }
+  }
+}
+.vcontent {
+  width: 1100px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  li {
+    width: 250px;
+    margin-top: 20px;
+    margin-right: 25px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    overflow: hidden;
+    &:nth-child(4n){
+      margin-right: 0;
+    }
+    img {
+      width: 250px;
+      height: 150px;
+      border-radius: 10px;
+    }
+    .shade {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 250px;
+      height: 150px;
+      cursor: pointer;
+      border-radius: 10px;
+      opacity: 0;
+      &:hover {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+      span {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background: #fff url('./play.svg') no-repeat center/25px;
+        &:hover {
+          background-color: rgb(53, 193, 255);
+        }
+      }
+    }
+    .text {
+      p {
+        max-width: 250px;
+        width: fit-content;
+        height: 24px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        cursor: pointer;
+        &:hover {
+          color: rgb(53, 193, 255);
+        }
+      }
+      .description {
+        line-height: 24px;
+        font-size: 15px;
+      }
+      .creator {
+        color: rgb(133, 133, 133);
+        img {
+          width: 24px;
+          height: 24px;
+          margin-right: 10px;
+          border-radius: 10px;
+          vertical-align: middle;
+        }
+        span{
+          &:hover {
+            color: rgb(53, 193, 255);
+          }
+        }
+      }
+    }
+  }
+}
+.dcontent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  li {
+    position: relative;
+    width: 190px;
+    margin-top: 20px;
+    margin-right: 37.5px;
+    &:nth-child(5n){
+      margin-right: 0;
+    }
+    img {
+      width: 190px;
+      height: 190px;
+      border-radius: 10px;
+    }
+    p {
+      margin-top: 7px;
+      font-size: 15px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      cursor: pointer;
+      &:hover {
+        color: rgb(53, 193, 255);
+      }
+    }
+    .artist {
+      margin-top: 0;
+      color: rgb(133, 133, 133);
+    }
+    .shade {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 190px;
+      height: 190px;
+      cursor: pointer;
+      border-radius: 10px;
+      opacity: 0;
+      &:hover {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+      span {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background: #fff url('./play.svg') no-repeat center/25px;
+        &:hover {
+          background-color: rgb(53, 193, 255);
+        }
+      }
+    }
+  }
+}
+// 内容盒子样式
+.mc {
+  width: 1270px;
+  height: 780px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  // &::-webkit-scrollbar {
+  //   display: none; /* Chrome Safari */
+  // }
+}
