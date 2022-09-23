@@ -1,10 +1,10 @@
-<template>
+<!-- <template>
   <div class="vedio">
     <div class="nav">
       <div class="sort" @click.stop="changef">
         {{ sort
-        }}<img src="../../assets/bottom.svg" alt="" v-show="flag == 0" /><img
-          src="../../assets/top.svg"
+        }}<img src="@/assets/bottom.svg" alt="" v-show="flag == 0" /><img
+          src="@/assets/top.svg"
           alt=""
           v-show="flag"
         />
@@ -176,4 +176,4 @@ export default {
     }
   }
 }
-</style>
+</style> -->

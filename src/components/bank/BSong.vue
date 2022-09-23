@@ -10,9 +10,9 @@
     <ul class="scontent" v-show="flag">
       <li v-for="(item, index) in newsong[active]" :key="index">
         <img :src="item.album.blurPicUrl" alt="" />
-        <div class="shade"><span></span></div>
+        <div class="shade"><span @click="updateMusiclist(item)"></span></div>
         <div class="text">
-          <p class="name">{{ item.name }}</p>
+          <p class="name" @click="updateMusiclist(item)">{{ item.name }}</p>
           <p class="artists">{{ item.artists[0].name }}</p>
         </div>
       </li>
@@ -23,6 +23,7 @@
 <script>
 import { reactive, toRefs, markRaw } from 'vue'
 import axios from 'axios'
+import updateMusiclist from '@/hook/updateMusiclist'
 export default {
   setup() {
     const data = reactive({
@@ -33,7 +34,6 @@ export default {
         const { data: ref } = await axios.get(`/top/song?type=${type}`)
         this.newsong[i] = markRaw(ref.data.slice(0, 9))
         this.flag = 1
-        console.log(ref)
       },
       async click(i, type) {
         this.flag = 0
@@ -44,7 +44,7 @@ export default {
       }
     })
     data.getnewsong(0, 7)
-    return { ...toRefs(data) }
+    return { ...toRefs(data), updateMusiclist }
   }
 }
 </script>

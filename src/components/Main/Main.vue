@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import MainNav from './MainNav'
-import MainLeftNav from './MainLeftNav'
-import MainContent from './MainContent'
+import MainNav from '@/components/Main/MainNav'
+import MainLeftNav from '@/components/Main/MainLeftNav'
+import MainContent from '@/components/Main/MainContent'
 
 export default {
   components: {

@@ -50,7 +50,7 @@
           <img :src="item.coverImgUrl" alt="" />
           <div class="shade" @click="totoplist(item.id)"><span></span></div>
           <span class="pc"
-            ><img src="../assets/PLplay.svg" alt="" />{{
+            ><img src="@/assets/PLplay.svg" alt="" />{{
               pl(item.playCount)
             }}</span
           >
@@ -141,7 +141,7 @@ export default {
       height: 45px;
       cursor: pointer;
       border-radius: 25px;
-      background: #fff url('../assets/play.svg') no-repeat center/23px;
+      background: #fff url('@/assets/play.svg') no-repeat center/23px;
       &:hover {
         background-color: rgb(53, 193, 255);
       }

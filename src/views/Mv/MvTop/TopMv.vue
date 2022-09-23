@@ -166,7 +166,7 @@ export default {
           height: 45px;
           cursor: pointer;
           border-radius: 25px;
-          background: #fff url('../assets/play.svg') no-repeat center/23px;
+          background: #fff url('@/assets/play.svg') no-repeat center/23px;
           &:hover {
             background-color: rgb(53, 193, 255);
           }

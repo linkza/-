@@ -1,5 +1,5 @@
 <template>
-  <div class="mc" ref="mc" >
+  <div class="mc" ref="mc">
     <div class="songlist" v-show="show">
       <div class="detail">
         <img :src="list.coverImgUrl" alt="" />
@@ -20,9 +20,9 @@
             </li>
           </ul>
           <ul class="button">
-            <li class="play"><img src="../assets/Splay.png" alt="" /> 播放</li>
+            <li class="play"><img src="@/assets/Splay.png" alt="" /> 播放</li>
             <li class="collect">
-              <img src="../assets/Scollect.png" alt="" />收藏
+              <img src="@/assets/Scollect.png" alt="" />收藏
             </li>
           </ul>
           <span class="playcount">播放量：{{ playcount + '万' }}</span>
@@ -45,9 +45,9 @@
 </template>
 
 <script>
-import ssong from '../components/songlist/SSong.vue'
-import slist from '../components/songlist/SList.vue'
-import scomment from '../components/MusicComment.vue'
+import ssong from '@/components/songList/Detail/SSong'
+import slist from '@/components/songList/Detail/SList'
+import scomment from '@/components/MusicComment.vue'
 import { markRaw, reactive, toRefs, ref } from 'vue'
 import axios from 'axios'
 import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router'
@@ -80,7 +80,6 @@ export default {
         this.show = 1
         componentname.value = this.cname[0]
         this.active = 0
-        console.log(this.list, data)
       },
       toplaylist(cat) {
         router.push({ path: '/playlist', query: { cat } })

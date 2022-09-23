@@ -79,7 +79,6 @@ export default {
         nextTick(() => {
           this.show = 1
         })
-        console.log(item)
       },
       change() {
         this.flag = !this.flag

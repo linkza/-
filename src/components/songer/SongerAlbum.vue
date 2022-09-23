@@ -6,7 +6,7 @@
         <p>
           {{ item.name }}
         </p>
-        <div class="shade" @click="toac(item.id)"><span></span></div>
+        <div class="shade" @click="toAD(item.id)"><span></span></div>
       </li>
     </ul>
   </div>
@@ -37,7 +37,6 @@ export default {
           `/artist/album?id=${this.id}&limit=30&offset=${this.of}`
         )
         this.album.push(...ref.hotAlbums)
-        console.log(ref)
         this.of += 30
         nextTick(() => {
           if (ref.hotAlbums.length >= 30) {
@@ -45,8 +44,8 @@ export default {
           }
         })
       },
-      tosonglist(id) {
-        router.push({ path: '/songlist', query: { id, is: 1 } })
+      toAD(id) {
+        router.push({ path: '/albumcontent', query: { id } })
       }
     })
     data.getalbum()

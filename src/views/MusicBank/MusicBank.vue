@@ -1,24 +1,24 @@
 <template>
   <div class="mc" ref="mc" @scroll="scroll">
-    <banner></banner>
-    <rlist></rlist>
-    <rsong></rsong>
-    <rrank></rrank>
+    <bnav></bnav>
+    <bsong></bsong>
+    <bdish></bdish>
+    <bmv></bmv>
   </div>
 </template>
+
 <script>
-import banner from '../components/recomment/MBanner'
-import rlist from '../components/recomment/RList'
-import rsong from '../components/recomment/RSong'
-import rrank from '../components/recomment/RRank'
+import bnav from '@/components/bank/BNav.vue'
+import bsong from '@/components/bank/BSong.vue'
+import bdish from '@/components/bank/BDish.vue'
+import bmv from '@/components/bank/BMv.vue'
 import { reactive, toRefs, ref, onActivated } from 'vue'
 export default {
-  name: 'MusicrRcomment',
   components: {
-    banner,
-    rlist,
-    rsong,
-    rrank
+    bnav,
+    bsong,
+    bdish,
+    bmv
   },
   setup() {
     const mc = ref(null)

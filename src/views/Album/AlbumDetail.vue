@@ -10,9 +10,9 @@
             <span>{{ list.artist.name }}</span>
           </p>
           <ul class="button">
-            <li class="play"><img src="../assets/Splay.png" alt="" /> 播放</li>
+            <li class="play"><img src="@/assets/Splay.png" alt="" /> 播放</li>
             <li class="collect">
-              <img src="../assets/Scollect.png" alt="" />收藏
+              <img src="@/assets/Scollect.png" alt="" />收藏
             </li>
           </ul>
         </div>
@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import ssong from '../components/songlist/SSong.vue'
-import scomment from '../components/MusicComment.vue'
+import ssong from '@/components/songList/Detail/SSong'
+import scomment from '@/components/MusicComment.vue'
 import { markRaw, reactive, toRefs, ref } from 'vue'
 import axios from 'axios'
 import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router'
@@ -64,7 +64,6 @@ export default {
         this.show = 1
         componentname.value = this.cname[0]
         this.active = 1
-        console.log(this.list, data)
       },
       toplaylist(cat) {
         router.push({ path: '/playlist', query: { cat } })
@@ -210,9 +209,9 @@ export default {
       color: rgb(53, 193, 255);
     }
   }
-  .des{
+  .des {
     margin-top: 30px;
-    color:rgb(133, 133, 133);
+    color: rgb(133, 133, 133);
     text-indent: 2em;
     font-size: 15px;
   }

@@ -30,10 +30,10 @@ export default {
       mvdata: [],
       async getmv() {
         const { data: ref } = await axios.get('/mv/first?limit=4')
-        const { data: a } = await axios.get('/playlist/catlist')
-        const { data: b } = await axios.get('/top/playlist?cat=华语')
+        // const { data: a } = await axios.get('/playlist/catlist')
+        // const { data: b } = await axios.get('/top/playlist?cat=华语')
         this.mvdata = markRaw(ref.data)
-        console.log(ref, a, b)
+        // console.log(ref, a, b)
       }
     })
     data.getmv()

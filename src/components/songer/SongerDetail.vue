@@ -33,7 +33,6 @@ export default {
         const { data: ref } = await axios.get(`/artist/desc?id=${this.id}`)
         this.detail = markRaw(ref)
         this.flag = 1
-        console.log(ref)
       },
       toarray(a) {
         return a.split('\n')

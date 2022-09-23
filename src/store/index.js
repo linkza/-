@@ -1,6 +1,10 @@
 import { createStore } from 'vuex'
+import moduleplayer from '@/store/player'
 
 export default createStore({
+  modules: {
+    m_player: moduleplayer
+  },
   state: {
     loginflag: 0,
     active: { url: '', img: '', index: 0, duration: 0 },
@@ -9,6 +13,5 @@ export default createStore({
   },
   getters: {},
   mutations: {},
-  actions: {},
-  modules: {}
+  actions: {}
 })

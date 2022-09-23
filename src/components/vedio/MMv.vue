@@ -12,7 +12,7 @@
           {{ item }}
         </li>
         <span @click="tomvall"
-          >更多 <img src="../../assets/Rnext.svg" alt="" />
+          >更多 <img src="@/assets/Rnext.svg" alt="" />
         </span>
       </ul>
       <ul class="vcontent" v-if="flag">
@@ -33,7 +33,9 @@
     <div class="hot">
       <div class="title">
         <h3>最热MV</h3>
-        <span>更多 <img src="../../assets/Rnext.svg" alt="" /> </span>
+        <span @click="tomvall"
+          >更多 <img src="@/assets/Rnext.svg" alt="" />
+        </span>
       </div>
       <ul class="vcontent">
         <li v-for="(item, index) in hotmv" :key="index">
@@ -53,7 +55,9 @@
     <div class="wy">
       <div class="title">
         <h3>网易出品</h3>
-        <span>更多 <img src="../../assets/Rnext.svg" alt="" /> </span>
+        <span @click="tomvall">
+          更多 <img src="@/assets/Rnext.svg" alt="" />
+        </span>
       </div>
       <ul class="vcontent">
         <li v-for="(item, index) in wymv" :key="index">
@@ -81,7 +85,9 @@
         >
           {{ item }}
         </li>
-        <span @click="totopmv">更多 <img src="../../assets/Rnext.svg" alt="" /> </span>
+        <span @click="totopmv"
+          >更多 <img src="@/assets/Rnext.svg" alt="" />
+        </span>
       </ul>
       <ul class="content" v-if="rf">
         <li v-for="(item, index) in rankmv[ra]" :key="index">
@@ -209,6 +215,9 @@ export default {
       font-size: 12px;
       opacity: 0.5;
       cursor: pointer;
+      &:hover {
+        color: rgb(53, 193, 255);
+      }
       img {
         width: 10px;
         height: 10px;
@@ -282,7 +291,7 @@ export default {
             height: 45px;
             cursor: pointer;
             border-radius: 25px;
-            background: #fff url('../../assets/play.svg') no-repeat center/23px;
+            background: #fff url('@/assets/play.svg') no-repeat center/23px;
             &:hover {
               background-color: rgb(53, 193, 255);
             }

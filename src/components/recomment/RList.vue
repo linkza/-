@@ -30,7 +30,6 @@ export default {
       async getlist() {
         const { data: ref } = await axios.get('/personalized?limit=10')
         this.listdata = markRaw(ref.result)
-        console.log(this.listdata)
       },
       tolist() {
         router.push({ path: '/list' })

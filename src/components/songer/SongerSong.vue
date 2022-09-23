@@ -9,7 +9,7 @@
     <ul class="content" ref="ul">
       <li v-for="(item, index) in songdata" :key="index">
         <div class="sname">
-          <span>{{ item.name }}</span>
+          <span @click="updateMusiclist(item)">{{ item.name }}</span>
         </div>
         <div class="artist">
           <span v-for="(x, y) in item.ar" :key="y"
@@ -29,7 +29,8 @@
 import { reactive, toRefs, ref, nextTick } from 'vue'
 import axios from 'axios'
 import { useRoute } from 'vue-router'
-import timer from '../../hook/time'
+import timer from '@/hook/time'
+import updateMusiclist from '@/hook/updateMusiclist'
 export default {
   setup() {
     const route = useRoute()
@@ -51,7 +52,6 @@ export default {
           `/artist/songs?id=${this.id}&limit=30&offset=${this.of}`
         )
         this.songdata.push(...ref.songs)
-        console.log(this.songdata)
         this.of += 30
         nextTick(() => {
           this.show = 1
@@ -65,7 +65,8 @@ export default {
     data.getsong()
     return {
       ...toRefs(data),
-      ul
+      ul,
+      updateMusiclist
     }
   }
 }
@@ -90,6 +91,9 @@ export default {
   .sname {
     width: 490px;
     padding-left: 10px;
+    span:hover {
+      color: rgb(53, 193, 255);
+    }
   }
   .artist {
     width: 200px;

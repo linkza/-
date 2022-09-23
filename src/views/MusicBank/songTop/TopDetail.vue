@@ -11,9 +11,9 @@
           </p>
           <p class="description">简介：{{ playlist.description }}</p>
           <ul class="button">
-            <li class="play"><img src="../assets/Splay.png" alt="" /> 播放</li>
+            <li class="play"><img src="@/assets/Splay.png" alt="" /> 播放</li>
             <li class="collect">
-              <img src="../assets/Scollect.png" alt="" />收藏
+              <img src="@/assets/Scollect.png" alt="" />收藏
             </li>
           </ul>
           <span class="playcount">播放量：{{ pl }}</span>
@@ -29,7 +29,7 @@
         <ul class="content">
           <li v-for="(item, index) in privileges" :key="index">
             <div class="sname">
-              <span>{{ item.name }}</span>
+              <span @click="updateMusiclist(item)">{{ item.name }}</span>
             </div>
             <div class="artist">
               <span v-for="(x, y) in item.ar" :key="y"
@@ -51,8 +51,9 @@
 <script>
 import { reactive, toRefs, markRaw } from 'vue'
 import axios from 'axios'
-import timer from '../hook/time'
+import timer from '@/hook/time'
 import { useRoute } from 'vue-router'
+import updateMusiclist from '@/hook/updateMusiclist'
 export default {
   name: 'TopList',
   setup() {
@@ -75,7 +76,8 @@ export default {
     data.getrank()
     return {
       ...toRefs(data),
-      timer
+      timer,
+      updateMusiclist
     }
   }
 }
@@ -185,8 +187,11 @@ export default {
     }
   }
   .sname {
-    padding-left:10px;
+    padding-left: 10px;
     width: 490px;
+    span:hover {
+      color: rgb(53, 193, 255);
+    }
   }
   .artist {
     width: 200px;

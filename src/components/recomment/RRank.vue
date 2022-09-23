@@ -67,7 +67,6 @@ export default {
           this.songname.push(...song.playlist.tracks.slice(0, 3))
         }
         this.rankdata = markRaw(ref.list.slice(0, 4))
-        console.log(this.songname)
       },
       totopsong() {
         router.push({ path: '/topsong' })

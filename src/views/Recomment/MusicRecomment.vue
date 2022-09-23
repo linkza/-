@@ -1,20 +1,30 @@
 <template>
-  <div class="mc" ref="mc" @scroll="scroll"><songlist></songlist></div>
+  <div class="mc" ref="mc" @scroll="scroll">
+    <banner></banner>
+    <rlist></rlist>
+    <rsong></rsong>
+    <rrank></rrank>
+  </div>
 </template>
-
 <script>
-import songlist from '../components/list/LList.vue'
+import banner from '@/components/recomment/MBanner'
+import rlist from '@/components/recomment/RList'
+import rsong from '@/components/recomment/RSong'
+import rrank from '@/components/recomment/RRank'
 import { reactive, toRefs, ref, onActivated } from 'vue'
 export default {
+  name: 'MusicrRcomment',
   components: {
-    songlist
+    banner,
+    rlist,
+    rsong,
+    rrank
   },
   setup() {
     const mc = ref(null)
     const data = reactive({
       st: 0,
       scroll(e) {
-        console.log(mc)
         this.st = e.target.scrollTop
       }
     })

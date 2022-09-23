@@ -11,7 +11,7 @@
             {{ item.name }}
           </p>
           <span class="pc"
-            ><img src="../assets/PLplay.svg" alt="" />{{
+            ><img src="@/assets/PLplay.svg" alt="" />{{
               pl(item.playCount)
             }}</span
           >

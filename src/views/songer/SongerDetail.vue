@@ -13,7 +13,7 @@
           </p>
           <ul class="button">
             <li class="collect">
-              <img src="../assets/Scollect.png" alt="" />收藏
+              <img src="@/assets/Scollect.png" alt="" />收藏
             </li>
           </ul>
         </div>
@@ -41,11 +41,11 @@
 </template>
 
 <script>
-import song from '../components/songercontent/SongerSong.vue'
-import album from '../components/songercontent/SongerAlbum.vue'
-import mv from '../components/songercontent/SongerMv.vue'
-import detail from '../components/songercontent/SongerDetail.vue'
-import similar from '../components/songercontent/SimilarSonger.vue'
+import song from '@/components/songer/SongerSong.vue'
+import album from '@/components/songer/SongerAlbum.vue'
+import mv from '@/components/songer/SongerMv.vue'
+import detail from '@/components/songer/SongerDetail.vue'
+import similar from '@/components/songer/SimilarSonger.vue'
 import { markRaw, reactive, toRefs, ref } from 'vue'
 import axios from 'axios'
 import { useRoute, onBeforeRouteUpdate } from 'vue-router'

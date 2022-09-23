@@ -13,6 +13,7 @@ module.exports = {
     'space-before-function-paren': 0,
     'vue/no-deprecated-slot-attribute': 0,
     'vue/no-async-in-computed-properties': 0,
+    camelcase: 'off',
     indent: ['off', 2]
   }
 }

@@ -9,9 +9,9 @@
     <ul class="scontent">
       <li v-for="(item, index) in songdata" :key="index">
         <img :src="item.picUrl" alt="" />
-        <div class="shade"><span></span></div>
+        <div class="shade"><span @click="updateMusiclist(item)"></span></div>
         <div class="text">
-          <p class="name">{{ item.name }}</p>
+          <p class="name" @click="updateMusiclist(item)">{{ item.name }}</p>
           <p class="artists">{{ item.song.artists[0].name }}</p>
         </div>
       </li>
@@ -23,6 +23,7 @@
 import { reactive, toRefs, markRaw } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
+import updateMusiclist from '@/hook/updateMusiclist'
 export default {
   setup() {
     const router = useRouter()
@@ -31,7 +32,6 @@ export default {
       async getsong() {
         const { data: ref } = await axios.get('/personalized/newsong?limit=6')
         this.songdata = markRaw(ref.result)
-        console.log(this.songdata)
       },
       torsong() {
         router.push({ path: '/rsong' })
@@ -39,7 +39,8 @@ export default {
     })
     data.getsong()
     return {
-      ...toRefs(data)
+      ...toRefs(data),
+      updateMusiclist
     }
   }
 }

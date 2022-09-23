@@ -8,8 +8,8 @@
 
 <script>
 // import BackGround from './components/BackGround'
-import MaIn from './components/MaIn'
-import musiclogin from './components/login/MusicLogin.vue'
+import MaIn from '@/components/Main/Main'
+import musiclogin from '@/components/login/MusicLogin.vue'
 export default {
   components: {
     // BackGround,

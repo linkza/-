@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import player from '../components/MusicPlayer.vue'
+import player from '@/components/MusicPlayer.vue'
 import { useRoute } from 'vue-router'
 export default {
   components: {

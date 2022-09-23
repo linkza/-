@@ -9,7 +9,7 @@
     <ul class="content">
       <li v-for="(item, index) in songdata" :key="index">
         <div class="sname">
-          <span>{{ item.name }}</span>
+          <span @click="updateMusiclist(item)">{{ item.name }}</span>
         </div>
         <div class="artist">
           <span v-for="(x, y) in item.ar" :key="y"
@@ -59,7 +59,8 @@ import { reactive, toRefs } from 'vue'
 import axios from 'axios'
 import { useStore } from 'vuex'
 import { useRouter, useRoute, onBeforeRouteUpdate } from 'vue-router'
-import timer from '../../hook/time'
+import timer from '@/hook/time'
+import updateMusiclist from '@/hook/updateMusiclist'
 export default {
   setup() {
     const router = useRouter()
@@ -79,18 +80,15 @@ export default {
             `/playlist/track/all?id=${this.id}`
           )
           this.songdata = ref.songs
-          console.log(ref)
           const { data } = await axios.get(`/related/playlist?id=${this.id}`)
           store.state.similarlist = data.playlists
           this.flag = 1
         } else {
           const { data: ref } = await axios.get(`/album?id=${this.id}`)
           this.songdata = ref.songs
-          console.log(ref)
           const { data } = await axios.get(
             `/artist/album?id=${ref.album.artist.id}&limit=5`
           )
-          console.log(data)
           this.hot = 1
           this.hotAlbums = data.hotAlbums
           this.flag = 1
@@ -112,7 +110,8 @@ export default {
     })
     return {
       ...toRefs(data),
-      store
+      store,
+      updateMusiclist
     }
   }
 }
@@ -138,6 +137,11 @@ export default {
   .sname {
     width: 490px;
     padding-left: 10px;
+    &:nth-child(n + 1):hover {
+      span {
+        color: rgb(53, 193, 255);
+      }
+    }
   }
   .artist {
     width: 200px;

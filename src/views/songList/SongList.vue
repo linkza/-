@@ -1,21 +1,20 @@
 <template>
-  <div class="mc" ref="mc" @scroll="scroll">
-    <mmv></mmv>
-  </div>
+  <div class="mc" ref="mc" @scroll="scroll"><songlist></songlist></div>
 </template>
 
 <script>
-import mmv from '../components/vedio/MMv.vue'
+import songlist from '@/components/songList/LList'
 import { reactive, toRefs, ref, onActivated } from 'vue'
 export default {
   components: {
-    mmv
+    songlist
   },
   setup() {
     const mc = ref(null)
     const data = reactive({
       st: 0,
       scroll(e) {
+        console.log(mc)
         this.st = e.target.scrollTop
       }
     })

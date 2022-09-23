@@ -2,7 +2,9 @@
   <div class="dish">
     <div class="title">
       <h3>新碟上架</h3>
-      <span @click="tonewalbum">更多 <img src="../../assets/Rnext.svg" alt="" /></span>
+      <span @click="tonewalbum"
+        >更多 <img src="@/assets/Rnext.svg" alt=""
+      /></span>
     </div>
     <ul class="dcontent">
       <li v-for="(item, index) in dishdata" :key="index">

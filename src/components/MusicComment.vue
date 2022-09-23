@@ -8,7 +8,7 @@
       </div>
     </div>
     <ul class="hot">
-      <h3>最热评论（{{ hotcomment.length }}）</h3>
+      <h3>最热评论({{ hotcomment.length }})</h3>
       <li v-for="(item, index) in hotcomment" :key="index">
         <img :src="item.user.avatarUrl" alt="" />
         <div class="text">
@@ -83,7 +83,6 @@ export default {
         data.getcomment()
         observer.unobserve(entries[0].target)
       }
-      console.log(entries)
     }
     const observer = new IntersectionObserver(callback)
     const data = reactive({
@@ -114,7 +113,6 @@ export default {
         this.total = ref.total
         if (ref.comments.length > 8) {
           nextTick(() => {
-            console.log(newcom)
             observer.observe(newcom.value.children[this.newcomment.length - 4])
           })
         }
