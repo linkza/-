@@ -1,9 +1,11 @@
 import { createStore } from 'vuex'
 import moduleplayer from '@/store/player'
+import moduleuser from '@/store/user'
 
 export default createStore({
   modules: {
-    m_player: moduleplayer
+    m_player: moduleplayer,
+    m_user: moduleuser
   },
   state: {
     loginflag: 0,

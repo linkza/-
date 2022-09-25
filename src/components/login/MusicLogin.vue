@@ -71,16 +71,25 @@ export default {
         store.state.loginflag = !store.state.loginflag
       },
       async getcode() {
-        await axios.get(`/captcha/sent?phone=${this.phonenumber}`, {
-          withCredentials: true
-        })
+        console.log(
+          await axios.get(`/captcha/sent?phone=${this.phonenumber}`, {
+            withCredentials: true
+          })
+        )
       },
       async login() {
-        await axios.get(
+        const { data: res } = await axios.get(
           `/login/cellphone?phone=${this.phonenumber}&captcha=${this.code}`,
           { withCredentials: true }
         )
-        store.state.loginflag = !store.state.loginflag
+        if (res.code === 200) {
+          store.commit('m_user/updateProInfo', {
+            name: res.profile.nickname,
+            picImg: res.profile.avatarUrl
+          })
+          store.commit('m_user/updateLoginState', 1)
+        }
+        this.change()
       }
     })
     return {
@@ -102,6 +111,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 2px #e5e5e5, -1px -1px 1px #e5e5e5;
   .content {
     width: 400px;
     height: 400px;
@@ -144,15 +154,16 @@ export default {
           text-align: center;
           line-height: 30px;
           border-radius: 10px;
-          border: 1px solid #000;
+          border: 1px solid rgb(117, 117, 117);
           cursor: pointer;
         }
       }
       input {
         height: 30px;
         padding: 0 10px;
-        border: 1px solid #000;
+
         border-radius: 10px;
+        border: 1px solid rgb(117, 117, 117);
       }
       .input-phone {
         width: 250px;

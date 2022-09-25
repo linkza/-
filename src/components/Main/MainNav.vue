@@ -44,16 +44,20 @@
       </div>
     </div>
     <div class="user">
-      <img src="@/assets/head.jpg" alt="" class="header" /><span
-        @click="changeflag"
-        >{{ username }}</span
-      >
+      <img :src="proInfo.picImg" alt="" class="header" v-show="loginState" />
+      <img
+        src="@/assets/head.jpg"
+        alt=""
+        class="header"
+        v-show="!loginState"
+      /><span @click="changeflag" v-show="!loginState">点击登录</span>
+      <span v-show="loginState">{{ proInfo.name }}</span>
     </div>
   </div>
 </template>
 
 <script>
-import { reactive, toRefs, watch } from 'vue'
+import { computed, reactive, toRefs, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import axios from 'axios'
@@ -65,7 +69,6 @@ export default {
     const store = useStore()
     const data = reactive({
       input: '',
-      username: '点击登录',
       order: {
         songs: '歌曲',
         artists: '歌手',
@@ -74,6 +77,8 @@ export default {
       },
       SearchSuggest: {},
       suggestShow: 1,
+      proInfo: computed(() => store.state.m_user.proInfo),
+      loginState: computed(() => store.state.m_user.loginState),
       async getSearchSuggest(keywords) {
         const { data: res } = await axios.get(
           `/search/suggest?keywords=${keywords}`
@@ -93,18 +98,15 @@ export default {
       toAng(item, sort) {
         if (sort === 'songs') {
           updateMusiclist(item)
-        }
-        if (sort === 'artists') {
+        } else if (sort === 'artists') {
           router.push({ path: '/songerc', query: { id: item.id } })
-        }
-        if (sort === 'albums') {
+        } else if (sort === 'albums') {
           router.push({ path: '/albumcontent', query: { id: item.id, is: 0 } })
         } else {
           router.push({ path: '/songlist', query: { id: item.id, is: 0 } })
         }
       },
       onFocus() {
-        console.log(data.suggestShow)
         this.suggestShow = 1
       },
       onBlur() {

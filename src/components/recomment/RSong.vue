@@ -12,7 +12,9 @@
         <div class="shade"><span @click="updateMusiclist(item)"></span></div>
         <div class="text">
           <p class="name" @click="updateMusiclist(item)">{{ item.name }}</p>
-          <p class="artists">{{ item.song.artists[0].name }}</p>
+          <p class="artists" @click="toSongDetail(item.song.artists[0].id)">
+            {{ item.song.artists[0].name }}
+          </p>
         </div>
       </li>
     </ul>
@@ -35,6 +37,9 @@ export default {
       },
       torsong() {
         router.push({ path: '/rsong' })
+      },
+      toSongDetail(id) {
+        router.push({ path: '/songerc', query: { id } })
       }
     })
     data.getsong()
