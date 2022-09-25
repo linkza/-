@@ -9,7 +9,7 @@
     <ul class="content" ref="ul">
       <li v-for="(item, index) in songdata" :key="index">
         <div class="sname">
-          <span @click="updateMusiclist(item)">{{ item.name }}</span>
+          <span @click="updateMusiclist(item.id)">{{ item.name }}</span>
         </div>
         <div class="artist">
           <span v-for="(x, y) in item.ar" :key="y"

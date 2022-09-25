@@ -74,7 +74,6 @@ export default {
             }
           })
         }
-        console.log(ref)
       },
       changeclass(i, y) {
         this.active[i] = y
@@ -83,8 +82,7 @@ export default {
     data.getmv()
     watch(
       () => data.active,
-      (newvalue, oldvalue) => {
-        console.log(newvalue)
+      () => {
         data.mvlist = []
         data.of = 0
         data.getmv()

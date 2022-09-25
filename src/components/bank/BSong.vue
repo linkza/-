@@ -10,9 +10,9 @@
     <ul class="scontent" v-show="flag">
       <li v-for="(item, index) in newsong[active]" :key="index">
         <img :src="item.album.blurPicUrl" alt="" />
-        <div class="shade"><span @click="updateMusiclist(item)"></span></div>
+        <div class="shade"><span @click="updateMusiclist(item.id)"></span></div>
         <div class="text">
-          <p class="name" @click="updateMusiclist(item)">{{ item.name }}</p>
+          <p class="name" @click="updateMusiclist(item.id)">{{ item.name }}</p>
           <p class="artists">{{ item.artists[0].name }}</p>
         </div>
       </li>

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import mmv from '@/components/vedio/MMv.vue'
+import mmv from '@/components/Mv/MMv.vue'
 import { reactive, toRefs, ref, onActivated } from 'vue'
 export default {
   components: {

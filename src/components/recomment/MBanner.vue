@@ -1,7 +1,11 @@
 <template>
   <div class="banner">
     <ul class="img" ref="img">
-      <li v-for="(item, index) in bannerdata" :key="index">
+      <li
+        v-for="(item, index) in bannerdata"
+        :key="index"
+        @click="toAnyPage(item)"
+      >
         <img :src="item.imageUrl" alt="" />
       </li>
       <i class="left" @click="prev" @mouseover="over" @mouseout="out"></i>
@@ -28,8 +32,11 @@ import {
   onDeactivated,
   onActivated
 } from 'vue'
+import updateMusiclist from '@/hook/updateMusiclist'
+import { useRouter } from 'vue-router'
 export default {
   setup() {
+    const router = useRouter()
     const img = ref(null)
     const data = reactive({
       idArr: ['first', 'second', 'right'],
@@ -81,6 +88,17 @@ export default {
           }
         }
         this.timer = setInterval(this.next.bind(this), 3000)
+      },
+      toAnyPage(item) {
+        if (item.typeTitle === '新歌首发') {
+          updateMusiclist(item.encodeId)
+        }
+        if (item.typeTitle === '新碟首发') {
+          router.push({
+            path: '/albumcontent',
+            query: { id: item.encodeId, is: 0 }
+          })
+        }
       }
     })
     data.getbanner()
@@ -139,6 +157,7 @@ export default {
     & > li {
       position: absolute;
       transition: 0.3s ease-in-out;
+      cursor: pointer;
       img {
         height: 250px;
         width: 675px;

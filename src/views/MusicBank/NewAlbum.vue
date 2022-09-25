@@ -59,7 +59,6 @@ export default {
           data.show = 1
         })
         this.of += 50
-        console.log(ref)
       },
       changeclass(i) {
         this.active = i

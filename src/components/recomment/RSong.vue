@@ -9,7 +9,7 @@
     <ul class="scontent">
       <li v-for="(item, index) in songdata" :key="index">
         <img :src="item.picUrl" alt="" />
-        <div class="shade"><span @click="updateMusiclist(item)"></span></div>
+        <div class="shade"><span @click="updateMusiclist(item.id)"></span></div>
         <div class="text">
           <p class="name" @click="updateMusiclist(item)">{{ item.name }}</p>
           <p class="artists" @click="toSongDetail(item.song.artists[0].id)">
